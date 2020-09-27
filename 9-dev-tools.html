@@ -6,41 +6,88 @@
 </head>
 <body>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
-
+  <p onClick="makeGreen()">×BREAK×DOWN× CHECK CONSOLE</p>
+  <p>We're learning about the console and what it can do</p>
+  <style>
+    p:hover{
+      cursor: pointer;
+    }
+  </style>
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
     function makeGreen() {
       const p = document.querySelector('p');
-      p.style.color = '#BADA55';
+      p.style.color = 'pink';
       p.style.fontSize = '50px';
     }
 
     // Regular
+    console.log('yooooo');
 
     // Interpolated
+    console.log('hey i am a %s babe', 'dope');
 
     // Styled
-
+    console.log('%c I am great', 'font-size:30px; background: green; color: white; padding: 2em;');
+    
     // warning!
+    console.warn(' %c DANGER HERE BOO', 'color: red; font-size: 20px');
 
     // Error :|
+    console.error('shit! error');
 
     // Info
+    console.info('You are the best person on earth boo');
 
     // Testing
 
+    // this only shows when the test is wrong. If right, it wont show.
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+    console.assert(1 === 2, 'wrong durh');
+    console.assert(1 === 1, 'wrong durh');
+
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+    
+    console.clear()
 
     // Grouping together
+    dogs.forEach(dog =>{
+      console.groupCollapsed(`${dog.name}`);
+      console.log(dog.name, 'is a bully')
+      console.log(`${dog.name} is ${dog.age * 3}`);
+      console.groupEnd(`${dog.name}`);
+    }
+    )
 
     // counting
+    console.count('Hafy');
+    console.count('boo');
+    console.count('Hafy');
+    console.count('boo');
+    console.count('Hafy');
+    console.count('boo');
+    console.count('Hafy');
+    console.count('boo');
+    console.count('Hafy');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/Iamhafsah')
+    .then(data => data.json())
+    .then(data =>{
+      console.timeEnd('fetching data');
+      console.log(data);
+    })
 
+    console.table(dogs)
   </script>
 </body>
 </html>
